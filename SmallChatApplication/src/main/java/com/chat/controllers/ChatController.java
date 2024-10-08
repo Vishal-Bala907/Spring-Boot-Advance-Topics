@@ -13,7 +13,7 @@ public class ChatController {
 
 	/*
 	 * The @MessageMapping annotation ensures that, if a message is sent to the
-	 * /hello destination, the sendMessage() method is called.
+	 * destination, the sendMessage() method is called.
 	 * 
 	 * The payload of the message is bound to a ChatMessage object, which is passed
 	 * into sendMessage().
