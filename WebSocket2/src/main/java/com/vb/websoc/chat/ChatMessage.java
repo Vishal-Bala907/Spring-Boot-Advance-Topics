@@ -9,12 +9,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document
+@ToString
+@Document(collection = "chats")
 public class ChatMessage {
     @Id
     private String id;

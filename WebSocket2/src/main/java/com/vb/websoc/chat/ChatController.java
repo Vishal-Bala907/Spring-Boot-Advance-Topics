@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.MessageDeliveryException;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -33,6 +35,7 @@ public class ChatController {
     @MessageMapping("/chat")
     public void processMessage(@Payload ChatMessage chatMessage) {
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
+        System.out.println(chatMessage);
 		/*
 		 * The method convertAndSendToUser() sends a message to a specific user. 
 		 * Here’s how it works: 
@@ -65,5 +68,10 @@ public class ChatController {
                                                  @PathVariable String recipientId) {
         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(senderId, recipientId));
+    }
+    
+    @ExceptionHandler
+    public void exceptionOccured(MessageDeliveryException deliveryException) {
+    	System.err.println("EXCEPTION WHILE DELIVERING MESSAGE");
     }
 }
