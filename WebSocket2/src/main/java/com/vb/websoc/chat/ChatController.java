@@ -44,7 +44,7 @@ public class ChatController {
 		 * Destination: "/queue/messages" is the destination where the message will 
 		 * 					be sent. This destination is typically where the 
 		 * 					recipient is subscribed to receive messages. 
-		 * Message Payload: A new ChatNotification object is created with details 
+		 * Message PayLoad: A new ChatNotification object is created with details 
 		 * 					about the saved message,
 		 * 					including: 
 		 * 					savedMsg.getId(): The ID of the saved message.
